@@ -7,33 +7,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model auth {
+  id             Int @id @default(autoincrement())
   auth_code      Int @unique(map: "auth_code")
   tip_percentage Int
-
-  @@ignore
+  created_at           DateTime @default(now()) @db.DateTime(0)
+  updated_at           DateTime @default(now()) @db.DateTime(0)
 }
 
 model client {
   id      Int       @id @default(autoincrement())
   name    String    @db.VarChar(50)
+  created_at           DateTime @default(now()) @db.DateTime(0)
+  updated_at           DateTime @default(now()) @db.DateTime(0)
   invoice invoice[]
 }
 
 model invoice {
-  id                   Int     @id @default(autoincrement())
+  id                   Int      @id @default(autoincrement())
   client_id            Int
   waiter_id            Int
   tabl_id              Int
-  products_description String  @db.VarChar(500)
+  products_description String   @db.VarChar(500)
   tip                  Int
-  total_without_tip    Int
-  total_with_tip       Int
-  payed                Boolean @default(false)
-  client               client  @relation(fields: [client_id], references: [id], onDelete: Cascade, map: "client_id")
-  tabl                 tabl    @relation(fields: [tabl_id], references: [id], onDelete: Cascade, map: "tabl_id")
-  waiter               waiter  @relation(fields: [waiter_id], references: [id], onDelete: Cascade, map: "waiter_id")
+  total_without_tip    Float
+  total_with_tip       Float
+  payed                Boolean  @default(false)
+  created_at           DateTime @default(now()) @db.DateTime(0)
+  updated_at           DateTime @default(now()) @db.DateTime(0)
+  client               client   @relation(fields: [client_id], references: [id], onDelete: Cascade, map: "client_id")
+  tabl                 tabl     @relation(fields: [tabl_id], references: [id], onDelete: Cascade, map: "tabl_id")
+  waiter               waiter   @relation(fields: [waiter_id], references: [id], onDelete: Cascade, map: "waiter_id")
 
   @@index([client_id], map: "client_id")
   @@index([tabl_id], map: "tabl_id")
@@ -44,11 +48,15 @@ model tabl {
   id       Int       @id @default(autoincrement())
   location String    @db.VarChar(50)
   capacity Int
+  created_at           DateTime @default(now()) @db.DateTime(0)
+  updated_at           DateTime @default(now()) @db.DateTime(0)
   invoice  invoice[]
 }
 
 model waiter {
   id      Int       @id @default(autoincrement())
   name    String    @db.VarChar(50)
+  created_at           DateTime @default(now()) @db.DateTime(0)
+  updated_at           DateTime @default(now()) @db.DateTime(0)
   invoice invoice[]
 }

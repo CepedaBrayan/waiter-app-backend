@@ -11,7 +11,7 @@ export class CreateInvoiceDto {
   waiter_id: number;
 
   @IsNumber()
-  table_id: number;
+  tabl_id: number;
 
   @IsString()
   products_description: string;
