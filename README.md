@@ -29,33 +29,43 @@
 ## Installation
 
 ```bash
+
+$ clone the repository
+
+$ import the database in the folder db/waiter_db.sql
+
+$ create a .env file in the root folder with the following content:
+  DATABASE_URL="mysql://user:password@domain:port/db_name"
+  example: DATABASE_URL="mysql://root:123@localhost:3306/waiter_db"
+
 $ npm install
+
+$ npx prisma db pull
+
+$ npx prisma generate
+
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
 
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
+$ root url is: http://localhost:4000/waiter-app
+
 ```
 
-## Test
+## Insomnia Api RESTful test
 
 ```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+# watch mode
+$ Import the insomnia file collection in local
 
-# test coverage
-$ npm run test:cov
+$ Open, and send the requests
+
 ```
 
 ## Support
