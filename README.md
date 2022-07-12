@@ -62,7 +62,7 @@ $ root url is: http://localhost:4000/waiter-app
 ```bash
 
 # watch mode
-$ Import the insomnia file collection in local
+$ Import the insomnia file collection in folder insomnia/Insomnia_2022-07-12.json
 
 $ Open, and send the requests
 
