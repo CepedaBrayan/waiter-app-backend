@@ -53,7 +53,7 @@ $ npx prisma generate
 # watch mode
 $ npm run start:dev
 
-$ root url is: http://localhost:4000/waiter-app
+$ root url is: http://localhost:4000/waiter-app/
 
 ```
 
